@@ -1,0 +1,83 @@
+# ======================================================
+#             SUNSHINE SHIELD - CONFIGURAÇÃO
+# ======================================================
+
+# Ativa mensagens detalhadas no console para depuração de pacotes.
+# Mantenha em 'false' em servidores de produção para evitar lag de console.
+debugMode: false 
+
+# Gerenciamento global de módulos
+checks:
+  DosCheck: true # Proteção contra ataques de conexões (Bot Attack)
+  NBTCheck: true # Proteção contra itens com NBTs gigantes/maliciosos
+  BookCheck: true # Proteção contra crash de livros (Book & Quill)
+
+# ------------------------------------------------------
+# DECODE & NETWORK (Netty Layer)
+# Configurações de baixo nível para filtrar bytes antes de virarem pacotes.
+# ------------------------------------------------------
+decode:
+  # Tamanho máximo de um ByteBuf vindo de um cliente (em bytes).
+  # Valores acima de 8000 costumam ser pacotes maliciosos.
+  maxLength: 8000
+  # Capacidade total de leitura para prevenir estouro de memória (Heap).
+  maxCapacity: 16500
+
+# ------------------------------------------------------
+# DOS CHECK (Anti-Bot / Connection Filter)
+# ------------------------------------------------------
+doscheck:
+  # Limite global de Conexões Por Segundo (CPS) para ativar o Modo de Ataque.
+  cpsLimit: 130
+  # Tempo que um IP permanecerá bloqueado (em milissegundos). 300000 = 5 minutos.
+  blocktime: 300000
+  # Máximo de conexões permitidas vindo de um único IP por segundo.
+  cps_limit_ip: 20
+  # Tamanho máximo de dados em pacotes brutos (previne exploits de packet size).
+  maxDataCapacity: 700
+  
+  # Layouts visuais da Actionbar para administradores com permissão 'anticrash.notify'
+  actionbarlayout:
+    attack: '&c&lATAQUE &f| &fCPS &c%cps% &7| &fIPs Bloqueados &c%ips% &7| &fBloqueios &c%blocked%'
+    debug: '&e&lSHIELD &f| &fCPS &a%cps% &7| &fIPs Bloqueados &e%ips%'
+
+# ------------------------------------------------------
+# BOOK CHECK (Anti-Book Crash)
+# Previne que livros com caracteres especiais ou NBTs pesados travem o servidor.
+# ------------------------------------------------------
+bookcheck:
+  disableBooks: false       # Se 'true', desativa totalmente o uso de livros.
+  page_chars: 300           # Máximo de caracteres por página.
+  page_limit: 50            # Máximo de páginas permitidas em um livro.
+  page_byte_limit: 750      # Limite de bytes por página (previne caracteres invisíveis).
+  byte_limit: 38000         # Limite total de bytes do item livro.
+
+# ------------------------------------------------------
+# NBT & ITEM CHECKS (Anti-Exploit de Itens)
+# ------------------------------------------------------
+nbtcheck:
+  # Limites para Mob Spawners colocados via criativo ou editados.
+  spawner:
+    maxSpawnRange: 20
+    maxSpawnDelay: 1000
+    maxSpawnCount: 30
+    maxRequiredPlayerRange: 16
+  # Limites para NBTs de Mapas (previne lag de renderização).
+  map:
+    maxRange: 15
+  # Limite de caracteres em placas (Signs) para evitar lag de pacotes de texto.
+  sign:
+    maxLength: 50
+
+# ------------------------------------------------------
+# INTERACTION & MOVEMENT (Física e Blocos)
+# ------------------------------------------------------
+placecheck:
+  # Distância máxima que um jogador pode estar para colocar um bloco.
+  maxDistance: 6.0
+  # Se o TPS do servidor cair abaixo disso, o Shield endurece as verificações.
+  minTps: 15.0
+
+movecheck:
+  # Distância de teleporte que gera um alerta de movimento suspeito (Desync).
+  flagDistance: 5.0

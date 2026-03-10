@@ -1,0 +1,33 @@
+name: SunshineShield
+version: 1.0
+main: sunshine.Core
+author: r1verthebest
+api-version: 1.8
+
+# O ProtocolLib é OBRIGATÓRIO para os seus injetores Netty funcionarem.
+depend:
+  - ProtocolLib
+
+commands:
+  auracheck:
+    description: "Gerencia verificações de combate e aura."
+    permission: sunshine.admin
+  sunshine:
+    description: "Comando administrativo do Sunshine Shield."
+    aliases: [ss, shield]
+    permission: sunshine.admin
+  packetlog:
+    description: "Ativa ou desativa o log de pacotes para um jogador."
+    usage: "/packetlog <player>"
+    permission: sunshine.debug
+
+permissions:
+  sunshine.admin:
+    description: "Acesso total às funções administrativas."
+    default: op
+  sunshine.debug:
+    description: "Permite usar ferramentas de log e depuração."
+    default: op
+  sunshine.notify:
+    description: "Recebe alertas de ataques e exploits na actionbar."
+    default: op
