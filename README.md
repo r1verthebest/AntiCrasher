@@ -27,6 +27,15 @@ O sistema é dividido em quatro pilares fundamentais, totalmente modulares via `
 * **Reach Validation:** Validação de distância física em interações para prevenir exploits de pacotes de interação.
 * **Adaptive Security:** O sistema ajusta a sensibilidade dos filtros dinamicamente com base no **TPS** (Ticks Per Second) atual do servidor.
 
+### 📦 Dependencies & Technologies
+
+O projeto utiliza as seguintes bibliotecas e frameworks:
+
+* **[Netty](https://netty.io/):** Framework de rede assíncrono utilizado para a interceptação de pacotes na camada baixa.
+* **[Spigot API](https://hub.spigotmc.org/javadocs/spigot/):** Interface principal para integração com o servidor Minecraft 1.8.9.
+* **[ProtocolLib](https://www.spigotmc.org/resources/protocollib.1011/):** Utilizado para manipulação avançada de pacotes de forma segura.
+* **[Maven](https://maven.apache.org/):** Gerenciamento de dependências e automação do build.
+
 ---
 
 ### ⚙️ Configuração Base (`config.yml`)
