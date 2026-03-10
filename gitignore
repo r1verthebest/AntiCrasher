@@ -1,4 +1,4 @@
-# Compilação e Binários
+# CompilaÃ§Ã£o e BinÃ¡rios
 target/
 *.class
 *.jar
@@ -22,5 +22,5 @@ bin/
 .DS_Store
 Thumbs.db
 
-# Configurações Locais
+# ConfiguraÃ§Ãµes Locais
 *.log
